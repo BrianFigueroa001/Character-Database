@@ -17,4 +17,11 @@ public class Character {
     public String getName(){
         return name;
     }
+    
+    public void printInfo(){
+        System.out.println("\nName: " + name);
+        System.out.println("Race: " + race);
+        System.out.println("Class: " + charClass);
+        System.out.println("Alignment: " + alignment);
+    }
 }
