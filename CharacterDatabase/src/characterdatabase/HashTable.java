@@ -13,7 +13,7 @@ public class HashTable {
                 System.out.println("\nERROR: CHARACTER FOUND IN DATABASE.");
                 return;
             }
-            else if (index == MAX - 1){ //Problem: Unable to insert a character in a available position before the index
+            else if (index == MAX - 1){ //Problem: Unable to insert a character in a available position before the index.
                 System.out.println("\nCHARACTER INSERTION FAILED");
                 return;
             }

@@ -25,7 +25,7 @@ public class Main {
             System.out.println("\nOption 1: Insert New Character\nOption 2: Print Character Information\n" +
                                "Option 3: Delete Character\nOption 4: Print Number of Characters In Database\n" +
                                "Option 5: Terminate the Program");
-            System.out.print("Press 1, 2, 3, or 4 for their corresponding options: ");
+            System.out.print("Press 1, 2, 3, 4, or 5 for their corresponding options: ");
             String option;
             option = kb.nextLine();
             switch (option) {
