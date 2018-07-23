@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("\n-RPG Character Database Online");
+        System.out.println("\nRPG Character Database Online");
 
         Scanner kb = new Scanner(System.in);
         HashTable characterTable = new HashTable();
         Character chaszwik = new Character("Chaszwik", "Drow", "Thief", "Minion Evil");       
         Character giblort = new Character("Giblort", "Gnorf", "Fighter", "Chaotic Good");
         Character ekade = new Character("Ekade", "Half-Orc", "Druid", "True Neutral");
-        Character mousek = new Character("Mousek", "Half-Orc", "NPC", "Lawful Good");
+        Character mousek = new Character("Mousek", "Half-Orc", "NPC", "Lawful Neutral");
         Character pike = new Character("Pike", "Human", "Ranger/Fighter", "Mystery");
-        characterTable.put(chaszwik);
-        characterTable.put(giblort);
-        characterTable.put(mousek);
-        characterTable.put(ekade);
-        characterTable.put(pike);
+        characterTable.put("XxBladeInTheDarkness234xX", chaszwik);
+        characterTable.put("imahero", giblort);
+        characterTable.put("PonyBoy3000", mousek);
+        characterTable.put("SomeMemoryOfHerTragicPastOnlySheKnows",ekade);
+        characterTable.put("HisBirthDate", pike);
 
         boolean done = false;
         while (done != true){
@@ -39,12 +39,14 @@ public class Main {
                     System.out.print("Enter character's moral alignment: ");
                     String alignment = kb.nextLine();
                     Character newCharacter = new Character(name, race, charClass, alignment);
-                    characterTable.put(newCharacter);
+                    System.out.print("Enter new password: ");
+                    String password = kb.nextLine();
+                    characterTable.put(password, newCharacter);
                     break;
                 case "2":
-                    System.out.print("Enter character's name: ");
-                    name = kb.nextLine();
-                    Character character = characterTable.get(name);
+                    System.out.print("Enter your character's password: ");
+                    password = kb.nextLine();
+                    Character character = characterTable.get(password);
                     if (character == null){
                         System.out.println("\nERROR: Character Not Found");
                     }
@@ -53,9 +55,9 @@ public class Main {
                     }
                     break;
                 case "3":
-                    System.out.print("Enter character's name: ");
-                    name = kb.nextLine();
-                    characterTable.delete(name);
+                    System.out.print("Enter character's password: ");
+                    password = kb.nextLine();
+                    characterTable.delete(password);
                     break;
                 case "4":
                     System.out.println(characterTable.printNumberOfCharacters());
