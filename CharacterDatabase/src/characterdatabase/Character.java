@@ -23,7 +23,5 @@ public class Character {
         System.out.println("Race: " + race);
         System.out.println("Class: " + charClass);
         System.out.println("Alignment: " + alignment);
-
-
     }
 }

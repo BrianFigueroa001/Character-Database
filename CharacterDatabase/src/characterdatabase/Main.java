@@ -17,7 +17,7 @@ public class Main {
         characterTable.put("XxBladeInTheDarkness234xX", chaszwik);
         characterTable.put("imahero", giblort);
         characterTable.put("PonyBoy3000", mousek);
-        characterTable.put("SomeMemoryOfHerTragicPastOnlySheKnows",ekade);
+        characterTable.put("ATragicMemory",ekade);
         characterTable.put("HisBirthDate", pike);
 
         boolean done = false;
@@ -30,6 +30,9 @@ public class Main {
             option = kb.nextLine();
             switch (option) {
                 case "1":
+                    if (characterTable.isTableFull()){
+                        break;
+                    }
                     System.out.print("Enter character's name: ");
                     String name = kb.nextLine();
                     System.out.print("Enter character's race: ");
@@ -48,7 +51,7 @@ public class Main {
                     password = kb.nextLine();
                     Character character = characterTable.get(password);
                     if (character == null){
-                        System.out.println("\nERROR: Character Not Found");
+                        break;
                     }
                     else {
                         character.printInfo();
