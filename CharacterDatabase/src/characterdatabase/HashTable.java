@@ -11,19 +11,17 @@ public class HashTable {
         }
         HashEntry newEntry = new HashEntry(key, charObj);
         int index = hashFunction(key);
-        System.out.println(index + " " + key);
-        //Following two if-statements check the initial index
+        //Check the initial index and insert character if empty
         if (TABLE[index] == null){
             TABLE[index] = newEntry;
             numOfCharacters += 1;
             return;
         }
-        if (TABLE[index].getKey().equals(key)){
+        if (TABLE[index].getKey().equals(key)){ //Forces user to create unique keys.
             System.out.println("\nERROR: ENTER ANOTHER KEY");
             return;
         }
         //Linear probing begins
-        int initialIndex = index;
         ++index;
         if (index == MAX){
             index = 0;
@@ -59,7 +57,7 @@ public class HashTable {
         if (index == MAX){
             index = 0;
         }
-        while (!done) { //linear probing
+        while (done == false) { //linear probing
             if (index == initialIndex){
                 done = true;
             }
@@ -88,14 +86,14 @@ public class HashTable {
             }
         }
         //Linear probing begins
-        int tracker = index;
+        int initialIndex = index;
         boolean done = false;
         ++index;
         if (index == MAX){
             index = 0;
         }
-        while (!done) {
-            if (index == tracker){
+        while (done == false) {
+            if (index == initialIndex){
                 done = true;
             }
             if (TABLE[index] != null){
