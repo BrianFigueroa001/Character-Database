@@ -30,7 +30,7 @@ public class Main {
             option = kb.nextLine();
             switch (option) {
                 case "1":
-                    if (characterTable.isTableFull()){
+                    if (characterTable.isFull()){
                         break;
                     }
                     System.out.print("Enter character's name: ");
