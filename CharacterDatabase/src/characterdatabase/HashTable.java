@@ -79,12 +79,9 @@ public class HashTable {
         }
         return numOfChar == MAX;
     }
-    private int hashFunction(String key){
-        return hash(key.hashCode());
-    }
 
-    private int hash(int key){
-        return Math.abs(key % MAX);
+    private int hashFunction(String key){
+        return Math.abs(key.hashCode() % MAX);
     }
 
     private int linearProbing(int initialIndex, String key, boolean isPut) {
