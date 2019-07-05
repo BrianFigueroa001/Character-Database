@@ -33,6 +33,7 @@ public class Main {
             switch (option) {
                 case "1":
                     if (characterTable.isFull()){
+                        System.out.println("\nERROR: Database is full.");
                         break;
                     }
                     System.out.print("Enter character's name: ");

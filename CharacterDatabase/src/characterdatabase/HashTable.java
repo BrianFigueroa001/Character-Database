@@ -81,9 +81,6 @@ public class HashTable {
     }
 
     public boolean isFull(){
-        if (numOfChar == MAX){
-            System.out.println("\nERROR: TABLE IS FULL!");
-        }
         return numOfChar == MAX;
     }
 
