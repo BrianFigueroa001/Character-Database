@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Character-Database.iml" filepath="$PROJECT_DIR$/.idea/Character-Database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CharacterDatabase/CharacterDatabase.iml" filepath="$PROJECT_DIR$/CharacterDatabase/CharacterDatabase.iml" />
     </modules>
   </component>
 </project>

@@ -8,7 +8,9 @@ public class Main {
         System.out.println("\nRPG Character Database Online");
 
         Scanner kb = new Scanner(System.in);
+
         HashTable characterTable = new HashTable();
+
         Character chaszwik = new Character("Chaszwik", "Drow", "Thief", "Minion Evil");       
         Character giblort = new Character("Giblort", "Gnorf", "Fighter", "Chaotic Good");
         Character ekade = new Character("Ekade", "Half-Orc", "Druid", "True Neutral");
@@ -44,13 +46,16 @@ public class Main {
                     Character newCharacter = new Character(name, race, charClass, alignment);
                     System.out.print("Enter new password: ");
                     String password = kb.nextLine();
-                    characterTable.put(password, newCharacter);
+
+                    String message = characterTable.put(password, newCharacter);
+                    System.out.println(message);
                     break;
                 case "2":
                     System.out.print("Enter your character's password: ");
                     password = kb.nextLine();
                     Character character = characterTable.get(password);
                     if (character == null){
+                        System.out.println("\nERROR: Character not found");
                         break;
                     }
                     else {
@@ -60,7 +65,8 @@ public class Main {
                 case "3":
                     System.out.print("Enter character's password: ");
                     password = kb.nextLine();
-                    characterTable.delete(password);
+                    message = characterTable.delete(password);
+                    System.out.println(message);
                     break;
                 case "4":
                     System.out.println(characterTable.printNumberOfCharacters());

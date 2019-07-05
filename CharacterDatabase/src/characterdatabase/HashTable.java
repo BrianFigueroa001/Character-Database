@@ -1,31 +1,39 @@
 package characterdatabase;
 
 public class HashTable {
-    private final int MAX = 3; //Subject to change
+    private final int MAX = 10; //Maximum amount of characters that can be stored.
     private final HashEntry[] TABLE = new HashEntry[MAX];
-    private int numOfChar = 0; //tracks number of characters in table
+    private int numOfChar = 0; //tracks number of characters occupying the table
 
-    public void put(String key, Character charObj){ //Will never run if isFull() returns true
+    /**
+     * Inserts a character object and a password (key) to access it into the hashtable.
+     * @param key The password entered by the user.
+     * @param charObj The character the user wants to store.
+     * @return A message stating if operation was successful or if there was an error.
+     */
+    public String put(String key, Character charObj){ //Will never run if isFull() returns true
         HashEntry newEntry = new HashEntry(key, charObj);
         int index = hashFunction(key);
         //Check the initial index and insert character if empty
         if (TABLE[index] == null){
             TABLE[index] = newEntry;
             numOfChar += 1;
-            return;
+            return "\nEntry successful";
         }
-        if (TABLE[index].getKey().equals(key)){ //Forces user to create unique keys.
-            System.out.println("\nERROR: ENTER ANOTHER KEY");
-            return;
-        }
+
+//        if (TABLE[index].getKey().equals(key)){ //Forces user to create unique keys.
+//            return "ERROR: ENTER ANOTHER KEY";
+//        }
+
         index = linearProbing(index, key, true);
+
         if (index == -1) {
-            System.out.println("\nERROR: ENTER ANOTHER PASSWORD");
-            return;
+            return "\nERROR: ENTRY NOT SUCCESSFUL";
         }
         else {
             TABLE[index] = newEntry;
             numOfChar += 1;
+            return "\nEntry successful.";
         }
     }
     
@@ -39,7 +47,6 @@ public class HashTable {
         //Linear probing begins
         index = linearProbing(index, key, false);
         if (index < 0) {
-            System.out.println("\nERROR: CHARACTER NOT FOUND");
             return null;
         }
         else {
@@ -47,26 +54,26 @@ public class HashTable {
         }
     }
 
-    public void delete(String key){
+    public String delete(String key){
         int index = hashFunction(key);
         if (TABLE[index] != null){
             if (TABLE[index].getKey().equals(key)){
                 TABLE[index] = null;
                 numOfChar -= 1;
-                System.out.println("\nEntry Deleted From Database");
-                return;
+                return "\nEntry deleted.";
             }
         }
+
         index = linearProbing(index, key, false);
+
         if (index < 0) {
-            return;
+            return "\nERROR: Character not found";
         }
         else {
             TABLE[index] = null;
             numOfChar -= 1;
-            System.out.println("\nEntry Deleted From Table");
+            return "\nEntry deleted";
         }
-
     }
 
     public String printNumberOfCharacters(){ //Used for testing purposes
@@ -94,9 +101,9 @@ public class HashTable {
         if (isPut) {
             while (TABLE[index] != null) { //linear probing
                 if (TABLE[index].getKey().equals(key)) {
-                    System.out.println("\nERROR: ENTER NEW PASSWORD");
                     return -1;
-                } else {
+                }
+                else {
                     ++index;
                     if (index == MAX) {
                         index = 0;
